@@ -26,7 +26,11 @@ app.post("/tweets", (req, res) => {
 });
 
 app.get("/tweets", (req, res) => { 
-    res.send(tweets);
+   if (tweets.length >= 10){
+        res.send(tweets);
+    }else {
+        res.send(tweets.slice(-10));
+    }
 });
 
 app.listen(5000, () => {
